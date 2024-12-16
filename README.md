@@ -17,3 +17,35 @@
 * URL-адрес репозитория. 
 
 Все функции визуализатора зависимостей должны быть покрыты тестами. 
+
+## Структура запуска
+
+Для взаимодействия с **CLI** мы используем параметры, которые нам нужно было добавить по заданию:
+* ``--path [Путь к программе для визуализации графов]``
+* ``--package [Имя анализируемого пакета]``
+* ``--output [Путь к файлу-результату в виде кода]``
+* ``--max-depth [Максимальная глубина анализа]``
+* ``--repo-url [URL-адрес репозитория]``
+
+В коде **уже встроена** система пакетов для наглядности. Для использования визуализации графа можно воспользоваться веб-сервисом [PlatnUML](http://www.plantuml.com/)
+
+## Запуска кода в примере осущеставляется данной командой:
+```
+python main.py --path ./plantuml.jar --package com.example.app --output result.puml --max-depth 3 --repo-url http://example.com
+```
+
+## Команда для запуска тестов:
+```
+python -m unittest test_dependency_graph.py
+```
+
+## Результат тестов
+
+![image](https://github.com/user-attachments/assets/66cd928f-6698-4243-a1e9-8d3181cb45b9)
+
+## Результат работы программы
+
+![image](https://github.com/user-attachments/assets/acf0f6a7-a1e3-466c-be0b-a4f3be598717)
+![image](https://github.com/user-attachments/assets/30fad330-28d5-4b96-8572-31e2069921a9)
+
+
