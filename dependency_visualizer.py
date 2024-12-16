@@ -43,3 +43,27 @@ class DependencyVisualizer:
                 lines.append(f"{package} --> {dep}")
         lines.append("@enduml")
         return "\n".join(lines)
+
+def main():
+    parser = argparse.ArgumentParser(description="Dependency visualizer tool")
+    parser.add_argument("--path", required=True, help="Path to the root package")
+    parser.add_argument("--package", required=True, help="Name of the root package")
+    parser.add_argument("--output", required=True, help="Path to the output file for PlantUML code")
+    parser.add_argument("--depth", type=int, default=3, help="Maximum depth of dependency analysis")
+    parser.add_argument("--repo", required=True, help="URL of the repository")
+
+    args = parser.parse_args()
+
+    visualizer = DependencyVisualizer(root_package=args.package, max_depth=args.depth, repository_url=args.repo)
+    visualizer.analyze_package(args.path)
+
+    plantuml_code = visualizer.generate_plantuml()
+
+    with open(args.output, 'w', encoding='utf-8') as output_file:
+        output_file.write(plantuml_code)
+
+    print("PlantUML code generated successfully.")
+
+
+if __name__ == "__main__":
+    main()
